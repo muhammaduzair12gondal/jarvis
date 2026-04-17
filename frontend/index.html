@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIPHER Command Center</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="jarvis-container">
+        <!-- Header -->
+        <header>
+            <div class="system-status">
+                <span class="status-indicator online"></span>
+                <span class="status-text">SYSTEM ONLINE</span>
+            </div>
+            <h1>CIPHER</h1>
+            <div class="system-metrics">
+                <div class="metric-item" id="metricCPU">
+                    <span class="metric-label">CPU</span>
+                    <div class="bar">
+                        <div class="bar-fill" id="cpuBar" style="width: 0%;"></div>
+                    </div>
+                    <span class="metric-value" id="cpuValue">—</span>
+                </div>
+                <div class="metric-item" id="metricRAM">
+                    <span class="metric-label">RAM</span>
+                    <div class="bar">
+                        <div class="bar-fill" id="ramBar" style="width: 0%;"></div>
+                    </div>
+                    <span class="metric-value" id="ramValue">—</span>
+                </div>
+                <div class="metric-item" id="metricBattery">
+                    <span class="metric-label">BAT</span>
+                    <div class="bar">
+                        <div class="bar-fill battery-bar" id="batBar" style="width: 0%;"></div>
+                    </div>
+                    <span class="metric-value" id="batValue">—</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Interface -->
+        <main>
+            <!-- Core Visualizer -->
+            <div class="visualizer-container">
+                <div class="arc-reactor" id="arcReactor">
+                    <div class="core"></div>
+                    <div class="ring outer"></div>
+                    <div class="ring inner"></div>
+                    <div class="pulse"></div>
+                    <i class="fas fa-microphone" id="micIcon"></i>
+                </div>
+                <div class="current-status-display" id="statusDisplay">INITIALIZING...</div>
+            </div>
+
+            <!-- Chat / Interaction Log -->
+            <div class="interaction-log" id="chatLog">
+                <div class="memory-panel" id="memoryPanel">
+                    <div class="memory-panel-header">
+                        <span>🧠 MEMORY</span>
+                        <div class="memory-panel-actions">
+                            <button id="memoryRefreshBtn" class="mini-btn" title="Refresh memory">Refresh</button>
+                            <button id="memoryClearBtn" class="mini-btn danger"
+                                title="Clear all long-term memory">Clear</button>
+                        </div>
+                    </div>
+                    <div class="memory-panel-meta" id="memoryMeta">Loading memory...</div>
+                    <div class="memory-list" id="memoryList"></div>
+                </div>
+
+                <div class="message system">
+                    <div class="avatar"><i class="fas fa-robot"></i></div>
+                    <div class="bubble">CIPHER online, Uzair. Ready when you are.</div>
+                </div>
+            </div>
+
+            <!-- Live Speech Display -->
+            <div class="live-speech-container" id="liveSpeechContainer">
+                <div class="wave"></div>
+                <div class="live-text" id="liveSpeechText">Listening...</div>
+            </div>
+
+            <!-- Manual Input -->
+            <div class="input-area">
+                <button id="micBtn" class="action-btn primary" title="Toggle Voice Recognition">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <input type="text" id="commandInput" placeholder="Enter command manually or speak..."
+                    autocomplete="off">
+                <button id="sendBtn" class="action-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Confirmation Modal for Dangerous Commands -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <i class="fas fa-exclamation-triangle warning-icon"></i>
+                <h2>Authorization Required</h2>
+            </div>
+            <div class="modal-body">
+                <p>This command has been flagged as potentially dangerous. Do you wish to proceed?</p>
+                <div class="terminal-preview" id="dangerousCommandPreview">
+                    format C:
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn secondary" id="btnCancel">Cancel</button>
+                <button class="btn danger" id="btnExecute">Execute</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

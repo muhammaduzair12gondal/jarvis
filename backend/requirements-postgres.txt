@@ -1,0 +1,2 @@
+# Optional: install only if using CIPHER_MEMORY_BACKEND=postgres
+psycopg[binary]==3.2.9
